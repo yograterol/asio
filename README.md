@@ -10,3 +10,4 @@
   - [ ] Calculate response time. (Within `ping_domain`)
   - [ ] Get the HTML content and save URLs.
   - [ ] Create endpoints for manage and get info of single domain.
+  - [ ] Find library for crawler.
