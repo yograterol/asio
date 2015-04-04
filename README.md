@@ -26,7 +26,7 @@ mf - Minor feature
 
 ## Alpha
 
-Branch for the alpha deadline is `stable/0.1`. Freezing major features if were completed, another features will assing to the next version (milestone).
+Branch for the alpha deadline is `stable/0.1` (https://github.com/ClowlHQ/asio/tree/stable/0.1). Freezing major features if were completed, another features will assing to the next version (milestone).
 
 ## Final release
 
