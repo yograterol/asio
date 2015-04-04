@@ -20,7 +20,14 @@ mf - Minor feature
 
 ## Schedule
 
-May 5, 2015 - Asio 0.1 alpha.
-May 15, 2015 - Asio 0.1 beta.
-May 25, 2015 - Asio 0.1 release.
+- May 5, 2015 - Asio 0.1 alpha.
+- May 15, 2015 - Asio 0.1 beta.
+- May 25, 2015 - Asio 0.1 final release.
 
+## Alpha
+
+Branch for the alpha deadline is `stable/0.1`. Freezing major features if were completed, another features will assing to the next version (milestone).
+
+## Final release
+
+Merge `stable/0.1` to merge.
