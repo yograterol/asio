@@ -14,10 +14,10 @@ silent-test:
 
 format:
 	go fmt $(PACKAGES)
-	
+
 vendor_get:
 	go get -u github.com/codegangsta/negroni \
-	github.com/gorilla/mux \
+	github.com/julienschmidt/httprouter \
 	github.com/modocache/gory \
 	github.com/onsi/ginkgo \
 	github.com/onsi/ginkgo/ginkgo \
