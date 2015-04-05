@@ -14,7 +14,7 @@ mf - Minor feature
   - [ ] Get the HTML content and save URLs. - mf
   - [ ] Make basic implementation with https://github.com/PuerkitoBio/gocrawl. - mf
   - [ ] Create events model, for records of ping. - MF
-  - [ ] Create REST interface (Define framework* - Options: Gorilla, Martini, Gin, Revel) - MF
+  - [ ] Create REST interface (Using Negroni) - MF
   - [ ] Create endpoints for manage and get info of single domain. - MF
   - [ ] Create endpoints for manage events (events are the ping result to a single domain). - mf
 
