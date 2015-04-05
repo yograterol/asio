@@ -2,8 +2,8 @@
 
 # Roadmap 
 
-MF - Major feature
-mf - Minor feature
+- MF - Major feature
+- mf - Minor feature
 
 - [ ] Status Pages - v0.1
   - [ ] Connect to NoSQL database (preferably MongoDB) - MF
