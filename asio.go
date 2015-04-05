@@ -9,7 +9,7 @@ import (
 )
 
 func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	fmt.Fprint(w, "Welcome!\n")
+	fmt.Fprint(w, "Welcome to Asio :)!\n")
 }
 
 func DummyMethod(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
