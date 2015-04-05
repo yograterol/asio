@@ -1,0 +1,11 @@
+language: go
+
+go:
+    - 1.4
+
+services:
+      - mongodb
+
+install:
+    - make vendor_get
+    - go get -d -v ./... && go build -v ./...
