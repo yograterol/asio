@@ -9,3 +9,6 @@ services:
 install:
     - make vendor_get
     - go get -d -v ./... && go build -v ./...
+
+script:
+    - make test
