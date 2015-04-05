@@ -30,6 +30,9 @@ var _ = Describe("Domain", func() {
 			It("Domain URL", func() {
 				Expect(domainTwo.URL).To(Equal("http://clowl.com"))
 			})
+			It("Domain Setting is OK", func() {
+				Expect(domainOne.Setting).To(Equal(&domainOneSetting))
+			})
 		})
 
 		Context("Domain Setting struct", func() {
