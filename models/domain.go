@@ -25,10 +25,12 @@ func (ds *DomainSetting) Validate() bool {
 		(ds.Interval >= 60 && ds.Interval <= 180)
 }
 
+// Create a new Domain instance
 func NewDomain(Name, URL string, Setting *DomainSetting) Domain {
 	return Domain{Name: Name, URL: URL, Setting: Setting}
 }
 
+// Create a new DomainSetting instance
 func NewDomainSetting(Interval, Retry, Timeout uint8) (DomainSetting, error) {
 	ds := DomainSetting{Interval: Interval, Retry: Retry, Timeout: Timeout}
 	if ds.Validate() {
