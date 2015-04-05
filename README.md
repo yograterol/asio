@@ -1,6 +1,6 @@
 # asio
 
-Asio is a dashboard for APIs and software services, track multiple services from one place.
+Asio is a status page for APIs and software services, track multiple services from one place.
 
 * REST API for setting and getting status information of your services.
 * Historical log of all your services.
