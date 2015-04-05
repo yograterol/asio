@@ -1,6 +1,10 @@
 // domain model
 package models
 
+import (
+	"errors"
+)
+
 type Domain struct {
 	Name string
 	URL  string
@@ -15,19 +19,19 @@ type DomainSetting struct {
 }
 
 func (ds *DomainSetting) Validate() bool {
-	return (ds.Timeout >= 5 || ds.Timeout <= 20) &&
-		(ds.Retry >= 1 || ds.Retry <= 5) &&
-		(ds.Interval >= 60 || ds.Interval <= 180)
+	return (ds.Timeout >= 5 && ds.Timeout <= 20) &&
+		(ds.Retry >= 1 && ds.Retry <= 5) &&
+		(ds.Interval >= 60 && ds.Interval <= 180)
 }
 
 func NewDomain(Name, URL string) Domain {
-	return Domain{name: Name, URL: URL}
+	return Domain{Name: Name, URL: URL}
 }
 
-func NewDomainSetting(Domain *Domain, Interval, Retry, Timeout uint8) (DomainSetting, err) {
+func NewDomainSetting(Domain *Domain, Interval, Retry, Timeout uint8) (DomainSetting, error) {
 	ds := DomainSetting{Domain: Domain, Interval: Interval, Retry: Retry, Timeout: Timeout}
 	if ds.Validate() {
 		return ds, nil
 	}
-	return DomainSetting{}, error.Error("The settings for the domain is not valid.")
+	return DomainSetting{}, errors.New("The settings for the domain is not valid.")
 }
