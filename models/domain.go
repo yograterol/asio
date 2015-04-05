@@ -18,16 +18,19 @@ type DomainSetting struct {
 	Timeout  uint8 `bson:timeout`  // Timeout for each retry ping. min: 5s max: 20s
 }
 
+// Check if DomainSetting instance accomplish all restrictions.
 func (ds *DomainSetting) Validate() bool {
 	return (ds.Timeout >= 5 && ds.Timeout <= 20) &&
 		(ds.Retry >= 1 && ds.Retry <= 5) &&
 		(ds.Interval >= 60 && ds.Interval <= 180)
 }
 
+// Create a new Domain instance
 func NewDomain(Name, URL string, Setting *DomainSetting) Domain {
 	return Domain{Name: Name, URL: URL, Setting: Setting}
 }
 
+// Create a new DomainSetting instance
 func NewDomainSetting(Interval, Retry, Timeout uint8) (DomainSetting, error) {
 	ds := DomainSetting{Interval: Interval, Retry: Retry, Timeout: Timeout}
 	if ds.Validate() {
