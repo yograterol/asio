@@ -1,5 +1,7 @@
 # Asio
 
+[![Build Status](https://travis-ci.org/Clowl/asio.svg?branch=next)](https://travis-ci.org/Clowl/asio)
+
 Asio is a status page for APIs and software services and servers, track all of them from one place.
 
 * REST API for setting and getting status information of your services.
@@ -7,7 +9,7 @@ Asio is a status page for APIs and software services and servers, track all of t
 * Real time logging of your services.
 =======
 
-# Roadmap 
+# Roadmap
 
 - MF - Major feature
 - mf - Minor feature
