@@ -17,10 +17,10 @@ var _ = Describe("Domain", func() {
 
 	Describe("Domain and Domain settings struct type", func() {
 		BeforeEach(func() {
-			domainOne = Domain{Name: "Clowl 1", URL: "http://clowl.org"}
-			domainTwo = Domain{Name: "Clowl 2", URL: "http://clowl.com"}
-			domainOneSetting = DomainSetting{Domain: &domainOne, Interval: 10, Retry: 10, Timeout: 10}
-			domainTwoSetting = DomainSetting{Domain: &domainTwo, Interval: 60, Retry: 3, Timeout: 5}
+			domainOneSetting = DomainSetting{Interval: 10, Retry: 10, Timeout: 10}
+			domainTwoSetting = DomainSetting{Interval: 60, Retry: 3, Timeout: 5}
+			domainOne = Domain{Name: "Clowl 1", URL: "http://clowl.org", Setting: &domainOneSetting}
+			domainTwo = Domain{Name: "Clowl 2", URL: "http://clowl.com", Setting: &domainTwoSetting}
 		})
 
 		Context("Domain struct", func() {

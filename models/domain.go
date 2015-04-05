@@ -6,16 +6,16 @@ import (
 )
 
 type Domain struct {
-	Name string
-	URL  string
+	Name    string         `bson:Name`
+	URL     string         `bson:URL`
+	Setting *DomainSetting `bson:settings`
 	// Owner
 }
 
 type DomainSetting struct {
-	Domain   *Domain
-	Interval uint8 // Interval for each ping in seconds. min: 60s max: 180s
-	Retry    uint8 // Amount times for retry a ping to domain. min: 1 max: 5
-	Timeout  uint8 // Timeout for each retry ping. min: 5s max: 20s
+	Interval uint8 `bson:interval` // Interval for each ping in seconds. min: 60s max: 180s
+	Retry    uint8 `bson:retry`    // Amount times for retry a ping to domain. min: 1 max: 5
+	Timeout  uint8 `bson:timeout`  // Timeout for each retry ping. min: 5s max: 20s
 }
 
 func (ds *DomainSetting) Validate() bool {
@@ -24,12 +24,12 @@ func (ds *DomainSetting) Validate() bool {
 		(ds.Interval >= 60 && ds.Interval <= 180)
 }
 
-func NewDomain(Name, URL string) Domain {
-	return Domain{Name: Name, URL: URL}
+func NewDomain(Name, URL string, Setting *DomainSetting) Domain {
+	return Domain{Name: Name, URL: URL, Setting: Setting}
 }
 
-func NewDomainSetting(Domain *Domain, Interval, Retry, Timeout uint8) (DomainSetting, error) {
-	ds := DomainSetting{Domain: Domain, Interval: Interval, Retry: Retry, Timeout: Timeout}
+func NewDomainSetting(Interval, Retry, Timeout uint8) (DomainSetting, error) {
+	ds := DomainSetting{Interval: Interval, Retry: Retry, Timeout: Timeout}
 	if ds.Validate() {
 		return ds, nil
 	}
