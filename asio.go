@@ -19,7 +19,7 @@ func CreateRouters(router *httprouter.Router) {
 func main() {
 	router := httprouter.New()
 	n := negroni.Classic()
-	CreateRouters(&router)
+	CreateRouters(router)
 	n.UseHandler(router)
 	n.Run(":4000")
 }
