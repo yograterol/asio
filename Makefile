@@ -11,7 +11,7 @@ test_cover: vendor_get
 	ginkgo -r -v -cover --randomizeAllSpecs
 
 test: vendor_get
-	ginkgo -r -v --randomizeAllSpecs
+	ginkgo -r -v
 
 silent-test:
 	go test $(PACKAGES)

@@ -1,4 +1,4 @@
-package models_test
+package modules_test
 
 import (
 	"testing"
@@ -7,7 +7,7 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-func TestModels(t *testing.T) {
+func TestModules(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Models Suite")
+	RunSpecs(t, "Modules Suite")
 }
