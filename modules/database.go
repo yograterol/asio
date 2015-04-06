@@ -10,10 +10,10 @@ import (
 
 
 const {
-	MongoDBHost  = "example.mongo.com:35428"
-    AuthDatabase = "asio"
-	AuthUserName = "guest"
-	AuthPassword = "youknowwhatis"
+	MongoDBHost  = "localhost:27017"
+	AuthDatabase = "asio"
+	AuthUserName = ""
+	AuthPassword = ""
 	TestDatabase = "asio"
 }
 
@@ -31,19 +31,5 @@ func CreateDatabaseSession() {
 		log.Fatalf("CreateSession: %s\n", err)
 	}
 	
-	// http://godoc.org/labix.org/v2/mgo#Session.SetMode
-	mongoSession.SetMode(mgo.Monotonic, true)
-	
-	// Create a wait group to manage the goroutines.
-	var waitGroup sync.WaitGroup
- 
-	// Perform 10 concurrent queries against the database.
-	waitGroup.Add(10)
-	for query := 0; query < 10; query++ {
-		go RunQuery(query, &waitGroup, mongoSession)
-	}
- 
-	// Wait for all the queries to complete.
-	waitGroup.Wait()
-	log.Println("All Queries Completed")
+	return mongoSession
 }
