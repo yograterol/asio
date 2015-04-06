@@ -27,13 +27,5 @@ func CreateDatabaseSession() {
 	if err != nil {
 		log.Fatalf("CreateSession: %s\n", err)
 	}
-<<<<<<< HEAD
-
-	// http://godoc.org/labix.org/v2/mgo#Session.SetMode
-	mongoSession.SetMode(mgo.Monotonic, true)
-}
-=======
-
 	return mongoSession
 }
->>>>>>> d9b99e8c410611eb8c22cefb3627a0111ab541cf
