@@ -5,6 +5,15 @@ import (
 	"errors"
 )
 
+
+const (
+	MongoDBHost  = "example.mongo.com:35428"
+    AuthDatabase = "asio"
+	AuthUserName = "guest"
+	AuthPassword = "youknowwhatis"
+	TestDatabase = "asio"
+)
+
 type Domain struct {
 	Name    string         `bson:Name`
 	URL     string         `bson:URL`
@@ -36,5 +45,6 @@ func NewDomainSetting(Interval, Retry, Timeout uint8) (DomainSetting, error) {
 	if ds.Validate() {
 		return ds, nil
 	}
+	
 	return DomainSetting{}, errors.New("The settings for the domain is not valid.")
 }
