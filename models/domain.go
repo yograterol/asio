@@ -36,5 +36,6 @@ func NewDomainSetting(Interval, Retry, Timeout uint8) (DomainSetting, error) {
 	if ds.Validate() {
 		return ds, nil
 	}
+	
 	return DomainSetting{}, errors.New("The settings for the domain is not valid.")
 }
