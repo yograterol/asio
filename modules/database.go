@@ -10,11 +10,11 @@ import (
 const (
 	MongoDBHost  = "localhost:27017"
 	AuthDatabase = "asio"
-	AuthUserName = ""
+	AuthUsername = ""
 	AuthPassword = ""
 )
 
-func CreateDatabaseSession() {
+func CreateDatabaseSession() *mgo.Session {
 	mongoDbDialInfo := &mgo.DialInfo{
 		Addrs:    []string{MongoDBHost},
 		Timeout:  60 * time.Second,
