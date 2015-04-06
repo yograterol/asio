@@ -5,15 +5,6 @@ import (
 	"errors"
 )
 
-
-const (
-	MongoDBHost  = "example.mongo.com:35428"
-    AuthDatabase = "asio"
-	AuthUserName = "guest"
-	AuthPassword = "youknowwhatis"
-	TestDatabase = "asio"
-)
-
 type Domain struct {
 	Name    string         `bson:Name`
 	URL     string         `bson:URL`
