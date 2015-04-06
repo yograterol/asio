@@ -9,13 +9,13 @@ import (
 }
 
 
-const {
+const (
 	MongoDBHost  = "localhost:27017"
 	AuthDatabase = "asio"
 	AuthUserName = ""
 	AuthPassword = ""
 	TestDatabase = "asio"
-}
+)
 
 func CreateDatabaseSession() {
 	mongoDBDialInfo := &mgo.DialInfo {
