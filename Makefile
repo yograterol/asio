@@ -22,4 +22,5 @@ vendor_get:
 	github.com/onsi/ginkgo \
 	github.com/onsi/ginkgo/ginkgo \
 	github.com/onsi/gomega \
-	golang.org/x/tools/cover
+	# golang.org/x/tools/cmd/cover \
+	# golang.org/x/tools/cmd/vet
