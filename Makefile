@@ -6,12 +6,8 @@ run: vendor_get
 build: vendor_get
 		go build -o bin/asio asio.go
 
-test_cover: vendor_get
-	go get -u golang.org/x/tools/cmd/cover
-	ginkgo -r -v -cover --randomizeAllSpecs
-
 test: vendor_get
-	ginkgo -r -v
+	./goclean.sh
 
 silent-test:
 	go test $(PACKAGES)
@@ -25,4 +21,5 @@ vendor_get:
 	github.com/modocache/gory \
 	github.com/onsi/ginkgo \
 	github.com/onsi/ginkgo/ginkgo \
-	github.com/onsi/gomega
+	github.com/onsi/gomega \
+	golang.org/x/tools/cover

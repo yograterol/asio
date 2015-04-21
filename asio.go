@@ -8,15 +8,17 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
+// Index Method for fill the endpoint.
 func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	fmt.Fprint(w, "Welcome to Asio :)!\n")
 }
 
+// DummyMethod for fill the endpoint.
 func DummyMethod(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	fmt.Fprint(w, "Dummy!")
 }
 
-// Create endpoints for all ASIO functions.
+// CreateRouters - Create endpoints for all ASIO functions.
 // ASIO must support two versions, the previous and current release.
 func CreateRouters(router *httprouter.Router) {
 	router.GET("/", Index)

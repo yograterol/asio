@@ -1,31 +1,11 @@
 package modules
 
-import (
-	"log"
-	"time"
+import "labix.org/v2/mgo"
 
-	"labix.org/v2/mgo"
-)
-
-const (
-	MongoDBHost  = "localhost:27017"
-	AuthDatabase = "asio"
-	AuthUsername = ""
-	AuthPassword = ""
-)
-
-func CreateDatabaseSession() *mgo.Session {
-	mongoDbDialInfo := &mgo.DialInfo{
-		Addrs:    []string{MongoDBHost},
-		Timeout:  60 * time.Second,
-		Database: AuthDatabase,
-		Username: AuthUsername,
-		Password: AuthPassword,
-	}
-	// Create a session
-	mongoSession, err := mgo.DialWithInfo(mongoDbDialInfo)
+func CreateDatabaseSession(MongoDBURI, Database string) *mgo.Database {
+	mongoSession, err := mgo.Dial(MongoDBURI)
 	if err != nil {
-		log.Fatalf("CreateSession: %s\n", err)
+		panic(err)
 	}
-	return mongoSession
+	return mongoSession.DB(Database)
 }

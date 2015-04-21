@@ -1,47 +1,46 @@
-package models_test
+package models
 
 import (
-	. "github.com/Clowl/asio/models"
+	"testing"
 
-	. "github.com/onsi/ginkgo"
-	. "github.com/onsi/gomega"
+	. "github.com/Clowl/asio/modules"
+	"labix.org/v2/mgo"
 )
 
-var _ = Describe("Domain", func() {
-	var (
-		domainOne        Domain
-		domainTwo        Domain
-		domainOneSetting DomainSetting
-		domainTwoSetting DomainSetting
-	)
+const (
+	MongoDBURI = "mongodb://localhost"
+	Database   = "asio"
+)
 
-	Describe("Domain and Domain settings struct type", func() {
-		BeforeEach(func() {
-			domainOneSetting = DomainSetting{Interval: 10, Retry: 10, Timeout: 10}
-			domainTwoSetting = DomainSetting{Interval: 60, Retry: 3, Timeout: 5}
-			domainOne = Domain{Name: "Clowl 1", URL: "http://clowl.org", Setting: &domainOneSetting}
-			domainTwo = Domain{Name: "Clowl 2", URL: "http://clowl.com", Setting: &domainTwoSetting}
-		})
+var DB *mgo.Database
 
-		Context("Domain struct", func() {
-			It("Domain name", func() {
-				Expect(domainOne.Name).To(Equal("Clowl 1"))
-			})
-			It("Domain URL", func() {
-				Expect(domainTwo.URL).To(Equal("http://clowl.com"))
-			})
-			It("Domain Setting is OK", func() {
-				Expect(domainOne.Setting).To(Equal(&domainOneSetting))
-			})
-		})
+func init() {
+	DB = CreateDatabaseSession(MongoDBURI, Database)
+}
 
-		Context("Domain Setting struct", func() {
-			It("Domain Setting is valid", func() {
-				Expect(domainTwoSetting.Validate()).To(BeTrue())
-			})
-			It("Domain Setting is not valid", func() {
-				Expect(domainOneSetting.Validate()).ToNot(BeTrue())
-			})
-		})
-	})
-})
+func TestDomainSetting(t *testing.T) {
+	ds, _ := NewDomainSetting(60, 5, 10)
+	if ds.Interval != 60 || ds.Retry != 5 || ds.Timeout != 10 {
+		t.Fatal("Problem with DomainSetting model.")
+	}
+	ds_invalid, _ := NewDomainSetting(250, 250, 250)
+	if ds_invalid.Interval != 0 || ds_invalid.Retry != 0 || ds_invalid.Timeout != 0 {
+		t.Fatal("Problem with DomainSetting validate.")
+	}
+}
+
+func TestDomain(t *testing.T) {
+	ds, _ := NewDomainSetting(60, 5, 10)
+	d := NewDomain("Test.asio", "https://test.asio", &ds)
+	err := d.Save(DB)
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	d_invalid := NewDomain("", "", &ds)
+	err = d_invalid.Save(DB)
+	if err == nil {
+		t.Fatal("Failed the Domain model validate.")
+	}
+}
